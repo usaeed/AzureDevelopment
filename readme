@@ -1,0 +1,56 @@
+- Run following steps to connect to Azure using powershell 7
+
+Connect-AzAccount
+
+Get-AzResourceGroup | ft
+
+- Follow steps from link below
+
+Step 1 - azure resource manager blank template
+https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-tutorial-create-first-template?tabs=azure-powershell
+
+- create resource group
+
+New-AzResourceGroup `
+  -Name myResourceGroup `
+  -Location "Central US"
+
+- create blank template 
+
+$templateFile = "C:\Temp\azuredeploy.json"
+New-AzResourceGroupDeployment `
+  -Name blanktemplate `
+  -ResourceGroupName myResourceGroup `
+  -TemplateFile $templateFile
+
+Step 2 - Storage templates
+https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-tutorial-add-resource?tabs=azure-powershell
+
+
+- create addstorage template
+
+$templateFile = "C:\Temp\azuredeploystorage.json"
+New-AzResourceGroupDeployment `
+  -Name addstorage `
+  -ResourceGroupName myResourceGroup `
+  -TemplateFile $templateFile
+  
+
+$templateFile = "C:\Temp\azuredeploystorage.json"
+New-AzResourceGroupDeployment `
+  -Name addnameparameter `
+  -ResourceGroupName myResourceGroup `
+  -TemplateFile $templateFile `
+  -storageName "elestorage1453tg45455"
+  
+  
+$templateFile = "C:\Temp\azuredeploystorage.json"
+New-AzResourceGroupDeployment `
+  -Name usenondefaultsku `
+  -ResourceGroupName myResourceGroup `
+  -TemplateFile $templateFile `
+  -storageName "elestorage1453tg45499" `
+  -storageSKU Standard_GRS
+  
+
+  
