@@ -1,3 +1,8 @@
+-- Cleaning resouces az cli
+az group list
+az group delete --name myResourceGroup
+
+
 step 1
 az group create --name myResourceGroup --location eastus
 
