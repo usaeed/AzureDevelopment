@@ -1,0 +1,8 @@
+step 1
+az group create --name myResourceGroup --location eastus
+
+step 2
+az deployment group validate --parameters azuredeploy.parameters.json --template-file azuredeploy.json --resource-group myResourceGroup
+
+step 3
+az deployment group create --parameters azuredeploy.parameters.json --template-file azuredeploy.json --resource-group myResourceGroup
